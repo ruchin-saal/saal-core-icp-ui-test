@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="DigiXT UI" parallel="tests" thread-count="1" verbose="1">
+    <listeners>
+        <listener class-name="testListeners.TestNGListeners"/>
+    </listeners>
+    <test name="Validate the Login Scenarios for users">
+        <groups>
+            <run>
+                <include name="sanity"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="testSuite.LoginTest"/>
+        </classes>
+    </test>
+</suite>
+
