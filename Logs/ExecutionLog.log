@@ -1,3 +1,1 @@
-04:02:2025 18:00:11.679 INFO  testSuite.ICPTest [main] - initializeDriver Initializing the web-driver instance based on the things from the config file
-04:02:2025 18:00:29.982 INFO  testSuite.ICPTest [main] - verifyPassengerForecastingPage Verifying the Admin user logged-In successfully
-04:02:2025 18:00:30.939 INFO  testSuite.ICPTest [main] - verifyPassengerForecastingPage Verified the Admin user logged-In successfully & 'welcome message!!!
+07:02:2025 14:59:41.754 INFO  testSuite.ICPTest [main] - initializeDriver Initializing the web-driver instance based on the things from the config file
