@@ -76,13 +76,13 @@ public class ICPTest extends BaseClass {
     @Description("Visit UC2(Name Origin Explorer) Page and apply filters")
     @Story("Visit UC2(Name Origin Explorer) Page and apply filters")
     @Severity(SeverityLevel.CRITICAL)
-    public void test_case_4() {
+    public void validateNameOriginAfterEnteringName() {
         logger.info("Visit UC2(Name Origin Explorer) Page and apply filters");
         icpPage.performLoginIntoICPApplication(getValueFromProperties("adminUserName"), getValueFromProperties("adminPassword"));
         icpPage.selectNameOriginExplorerPage();
-        icpPage.enterName("Ruchin Khare");
+        icpPage.enterName(getValueFromProperties("name"));
         icpPage.selectPredictOriginButton();
-
+        icpPage.validateNameResultPage(getValueFromProperties("name"));
     }
 
     @Test(description = "Visit Dashboard1(Expats Residency)  page is up and running", groups = {"regression", "smoke", "sanity"})

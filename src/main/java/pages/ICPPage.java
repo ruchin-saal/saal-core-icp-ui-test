@@ -79,7 +79,6 @@ public class ICPPage {
     WebElement DEPARTURE_SHIFT2_CHART_IMG;
     @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Departure']//following::strong[text()='Shift 3']//following::div[contains(@style,'background-image')]")
     WebElement DEPARTURE_SHIFT3_CHART_IMG;
-
     @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Forecast Analysis')]//following::div[contains(@id,'highcharts')]")
     WebElement FORECAST_ANALYSIS_CHART;
     @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Arrival']//following::th[contains(text(),'Time')]")
@@ -99,12 +98,6 @@ public class ICPPage {
     @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Departure']//following::th[contains(text(),'Officers Required')]")
     WebElement STAFFED_GATE_DEPARTURE_OFFICERS_REQUIRED_LBL;
 
-
-
-
-
-
-
     // Locators for Use Case 2 (Name Origin Explorer Page)
     @FindBy(how = How.XPATH, using = "//span[text()='Name Origin Explorer']")
     WebElement NAME_ORIGIN_EXPLORER_LINK;
@@ -116,6 +109,16 @@ public class ICPPage {
     WebElement PREDICT_ORIGIN_BTN;
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Origin of Names Exploration')]")
     WebElement NAME_ORIGIN_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Region']")
+    WebElement REGION_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Country']")
+    WebElement COUNTRY_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Alternative Country']")
+    WebElement ALTERNATIVE_COUNTRY_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Other Top Countries Of Origin']")
+    WebElement OTHER_TOP_COUNTRIES_OF_ORIGIN_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Other Top Region Of Origin']")
+    WebElement OTHER_TOP_REGION_OF_ORIGIN_LBL;
 
     // Locators for Use Dashboard 1 (Expats Residency Page)
     @FindBy(how = How.XPATH, using = "//span[text()='Expats Residency']")
@@ -421,11 +424,9 @@ public class ICPPage {
     public void enterName(String fullName) {
         try {
             logger.info("Entering full name: " + fullName);
-
             // Wait for the input field to be clickable within 20 seconds
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             WebElement nameInputElement = wait.until(ExpectedConditions.elementToBeClickable(FULLNAME_TB));
-
             // Clear any existing text and enter the full name
             nameInputElement.clear();
             nameInputElement.sendKeys(fullName);
@@ -439,11 +440,9 @@ public class ICPPage {
     public void selectPredictOriginButton() {
         try {
             logger.info("Waiting for the Predict Origin button to be ready for click");
-
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             WebElement predictOriginButton = wait.until(ExpectedConditions.elementToBeClickable(PREDICT_ORIGIN_BTN));
             predictOriginButton.click();
-
             // Optional: wait for a few seconds
             Thread.sleep(5000);
         } catch (Exception e) {
@@ -593,6 +592,23 @@ public class ICPPage {
                 "Actual Value: '" + STAFFED_GATE_DEPARTURE_STATUS_LBL.getText() + "' is appearing blank while looking for real data");
         Assertions.softAssertTrue(STAFFED_GATE_DEPARTURE_OFFICERS_REQUIRED_LBL.isDisplayed(),
                 "Actual Value: '" + STAFFED_GATE_DEPARTURE_OFFICERS_REQUIRED_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertAll();
+    }
+
+    public void validateNameResultPage(String name) {
+        String locatorValue="//strong[text()='"+name+" Originated From']";
+        WebElement nameXpath=driver.findElement(By.xpath(locatorValue));
+        SeleniumWait.waitUntilVisibilityOfElement(driver, nameXpath, 20);
+        Assertions.softAssertTrue(REGION_LBL.isDisplayed(),
+                "Actual Value: '" + REGION_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(COUNTRY_LBL.isDisplayed(),
+                "Actual Value: '" + COUNTRY_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(ALTERNATIVE_COUNTRY_LBL.isDisplayed(),
+                "Actual Value: '" + ALTERNATIVE_COUNTRY_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(OTHER_TOP_COUNTRIES_OF_ORIGIN_LBL.isDisplayed(),
+                "Actual Value: '" + OTHER_TOP_COUNTRIES_OF_ORIGIN_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(OTHER_TOP_REGION_OF_ORIGIN_LBL.isDisplayed(),
+                "Actual Value: '" + OTHER_TOP_REGION_OF_ORIGIN_LBL.getText() + "' is appearing blank while looking for real data");
         Assertions.softAssertAll();
     }
 }
