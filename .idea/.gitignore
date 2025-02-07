@@ -58,4 +58,5 @@ node_modules/
 
 # Ignore the build tool's cache (for Maven/Gradle)
 *.m2/
+*.log
 
