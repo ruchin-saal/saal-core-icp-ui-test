@@ -56,7 +56,9 @@ public class ICPTest extends BaseClass {
         icpPage.selectEmiratesCode(getValueFromProperties("emiratesCodeAUH"));
         icpPage.selectDate(getValueFromProperties("calenderDate"));
         icpPage.validateExpectedPassengersVolumeElements();
-
+        icpPage.validateStaffGateArrivalDeparture();
+        icpPage.validatePassengersForecastAnalysis();
+        icpPage.validateStaffedGatePassengersCount();
     }
 
     @Test(description = "Visit UC2(Name Origin Explorer) page is up and running", groups = {"regression", "smoke", "sanity"})

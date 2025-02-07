@@ -1,1 +1,2 @@
-07:02:2025 14:59:41.754 INFO  testSuite.ICPTest [main] - initializeDriver Initializing the web-driver instance based on the things from the config file
+07:02:2025 16:48:36.524 INFO  testSuite.ICPTest [main] - initializeDriver Initializing the web-driver instance based on the things from the config file
+07:02:2025 16:48:52.318 INFO  testSuite.ICPTest [main] - applyFilterForPassengerForecastingPage Visit UC1(Passenger Forecasting) Page and apply filters

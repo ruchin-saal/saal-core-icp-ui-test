@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.TimeoutException;
 import utils.Assertions;
+import utils.SeleniumUtils;
 import utils.SeleniumWait;
 
 import java.time.Duration;
@@ -54,6 +55,55 @@ public class ICPPage {
     WebElement STAFFED_GATE_DEPARTURE_LBL;
     @FindBy(how = How.XPATH, using = "//span[text()='% of Passengers in Transit']//following::h4/span")
     WebElement PASSENGERS_IN_TRANSIT_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Arrival']//following::strong[text()='Shift 1']")
+    WebElement ARRIVAL_SHIFT1_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Arrival']//following::strong[text()='Shift 2']")
+    WebElement ARRIVAL_SHIFT2_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Arrival']//following::strong[text()='Shift 3']")
+    WebElement ARRIVAL_SHIFT3_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Departure']//following::strong[text()='Shift 1']")
+    WebElement DEPARTURE_SHIFT1_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Departure']//following::strong[text()='Shift 2']")
+    WebElement DEPARTURE_SHIFT2_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Departure']//following::strong[text()='Shift 3']")
+    WebElement DEPARTURE_SHIFT3_LBL;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Arrival']//following::strong[text()='Shift 1']//following::div[contains(@style,'background-image')]")
+    WebElement ARRIVAL_SHIFT1_CHART_IMG;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Arrival']//following::strong[text()='Shift 2']//following::div[contains(@style,'background-image')]")
+    WebElement ARRIVAL_SHIFT2_CHART_IMG;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Arrival']//following::strong[text()='Shift 3']//following::div[contains(@style,'background-image')]")
+    WebElement ARRIVAL_SHIFT3_CHART_IMG;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Departure']//following::strong[text()='Shift 1']//following::div[contains(@style,'background-image')]")
+    WebElement DEPARTURE_SHIFT1_CHART_IMG;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Departure']//following::strong[text()='Shift 2']//following::div[contains(@style,'background-image')]")
+    WebElement DEPARTURE_SHIFT2_CHART_IMG;
+    @FindBy(how = How.XPATH, using = "//h5[text()='Staffed Gate - Departure']//following::strong[text()='Shift 3']//following::div[contains(@style,'background-image')]")
+    WebElement DEPARTURE_SHIFT3_CHART_IMG;
+
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Forecast Analysis')]//following::div[contains(@id,'highcharts')]")
+    WebElement FORECAST_ANALYSIS_CHART;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Arrival']//following::th[contains(text(),'Time')]")
+    WebElement STAFFED_GATE_ARRIVAL_TIME_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Arrival']//following::th[contains(text(),'Manual Gate Passengers Volume')]")
+    WebElement STAFFED_GATE_ARRIVAL_MANUAL_GATE_PASSENGERS_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Arrival']//following::th[contains(text(),'Status')]")
+    WebElement STAFFED_GATE_ARRIVAL_STATUS_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Arrival']//following::th[contains(text(),'Officers Required')]")
+    WebElement STAFFED_GATE_ARRIVAL_OFFICERS_REQUIRED_TH;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Departure']//following::th[contains(text(),'Time')]")
+    WebElement STAFFED_GATE_DEPARTURE_TIME_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Departure']//following::th[contains(text(),'Manual Gate Passengers Volume')]")
+    WebElement STAFFED_GATE_DEPARTURE_MANUAL_GATE_PASSENGERS_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Departure']//following::th[contains(text(),'Status')]")
+    WebElement STAFFED_GATE_DEPARTURE_STATUS_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Departure']//following::th[contains(text(),'Officers Required')]")
+    WebElement STAFFED_GATE_DEPARTURE_OFFICERS_REQUIRED_LBL;
+
+
+
+
+
+
 
     // Locators for Use Case 2 (Name Origin Explorer Page)
     @FindBy(how = How.XPATH, using = "//span[text()='Name Origin Explorer']")
@@ -474,17 +524,75 @@ public class ICPPage {
                 "Actual Value: '" + AIRCRAFT_ACTIVITY_LBL.getText() + "' is appearing blank while looking for real data");
         Assertions.softAssertTrue(!EXPECTED_PASSENGERS_TRAFFIC_LBL.getText().equals("-"),
                 "Actual Value: '" + EXPECTED_PASSENGERS_TRAFFIC_LBL.getText() + "' is appearing blank while looking for real data");
-        Assertions.softAssertFalse(!STAFFED_GATE_PASSENGERS_LBL.getText().equals("-"),
+        Assertions.softAssertTrue(!STAFFED_GATE_PASSENGERS_LBL.getText().equals("-"),
                 "Actual Value: '" + STAFFED_GATE_PASSENGERS_LBL.getText() + "' is appearing blank while looking for real data");
-        Assertions.softAssertFalse(!E_GATE_PASSENGERS_LBL.getText().equals("-"),
+        Assertions.softAssertTrue(!E_GATE_PASSENGERS_LBL.getText().equals("-"),
                 "Actual Value: '" + E_GATE_PASSENGERS_LBL.getText() + "' is appearing blank while looking for real data");
-        Assertions.softAssertFalse(!STAFFED_GATE_ARRIVAL_LBL.getText().equals("-"),
+        Assertions.softAssertTrue(!STAFFED_GATE_ARRIVAL_LBL.getText().equals("-"),
                 "Actual Value: '" + STAFFED_GATE_ARRIVAL_LBL.getText() + "' is appearing blank while looking for real data");
-        Assertions.softAssertFalse(!STAFFED_GATE_DEPARTURE_LBL.getText().equals("-"),
+        Assertions.softAssertTrue(!STAFFED_GATE_DEPARTURE_LBL.getText().equals("-"),
                 "Actual Value: '" + STAFFED_GATE_DEPARTURE_LBL.getText() + "' is appearing blank while looking for real data");
-        Assertions.softAssertFalse(!PASSENGERS_IN_TRANSIT_LBL.getText().equals("-"),
+        Assertions.softAssertTrue(!PASSENGERS_IN_TRANSIT_LBL.getText().equals("-"),
                 "Actual Value: '" + PASSENGERS_IN_TRANSIT_LBL.getText() + "' is appearing blank while looking for real data");
         Assertions.softAssertAll();
+    }
 
+    public void validateStaffGateArrivalDeparture(){
+        SeleniumWait.waitUntilVisibilityOfElement(driver,ARRIVAL_SHIFT1_LBL, 20);
+        SeleniumUtils.scrollTillElementWithJS(driver, ARRIVAL_SHIFT1_LBL);
+        Assertions.softAssertTrue(ARRIVAL_SHIFT1_LBL.isDisplayed(),
+                "Actual Value: '" + ARRIVAL_SHIFT1_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(ARRIVAL_SHIFT2_LBL.isDisplayed(),
+                "Actual Value: '" + ARRIVAL_SHIFT2_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(ARRIVAL_SHIFT3_LBL.isDisplayed(),
+                "Actual Value: '" + ARRIVAL_SHIFT3_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(DEPARTURE_SHIFT1_LBL.isDisplayed(),
+                "Actual Value: '" + DEPARTURE_SHIFT1_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(DEPARTURE_SHIFT2_LBL.isDisplayed(),
+                "Actual Value: '" + DEPARTURE_SHIFT2_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(DEPARTURE_SHIFT3_LBL.isDisplayed(),
+                "Actual Value: '" + DEPARTURE_SHIFT3_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(ARRIVAL_SHIFT1_CHART_IMG.isDisplayed(),
+                "Actual Value: '" + ARRIVAL_SHIFT1_CHART_IMG.getAttribute("style") + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(ARRIVAL_SHIFT2_CHART_IMG.isDisplayed(),
+                "Actual Value: '" + ARRIVAL_SHIFT2_CHART_IMG.getAttribute("style") + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(ARRIVAL_SHIFT3_CHART_IMG.isDisplayed(),
+                "Actual Value: '" + ARRIVAL_SHIFT3_CHART_IMG.getAttribute("style") + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(DEPARTURE_SHIFT1_CHART_IMG.isDisplayed(),
+                "Actual Value: '" + DEPARTURE_SHIFT1_CHART_IMG.getAttribute("style") + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(DEPARTURE_SHIFT2_CHART_IMG.isDisplayed(),
+                "Actual Value: '" + DEPARTURE_SHIFT2_CHART_IMG.getAttribute("style") + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(DEPARTURE_SHIFT3_CHART_IMG.isDisplayed(),
+                "Actual Value: '" + DEPARTURE_SHIFT3_CHART_IMG.getAttribute("style") + "' is appearing blank while looking for real data");
+        Assertions.softAssertAll();
+    }
+
+    public void validatePassengersForecastAnalysis(){
+        SeleniumWait.waitUntilVisibilityOfElement(driver,FORECAST_ANALYSIS_CHART, 20);
+        SeleniumUtils.scrollTillElementWithJS(driver, FORECAST_ANALYSIS_CHART);
+        Assertions.softAssertTrue(FORECAST_ANALYSIS_CHART.isDisplayed(),
+                "Actual Value: '" + FORECAST_ANALYSIS_CHART.getText() + "' is appearing blank while looking for real data");
+    }
+
+    public void validateStaffedGatePassengersCount(){
+        SeleniumWait.waitUntilVisibilityOfElement(driver,STAFFED_GATE_ARRIVAL_TIME_LBL, 20);
+        SeleniumUtils.scrollTillElementWithJS(driver, STAFFED_GATE_ARRIVAL_TIME_LBL);
+        Assertions.softAssertTrue(STAFFED_GATE_ARRIVAL_TIME_LBL.isDisplayed(),
+                "Actual Value: '" + STAFFED_GATE_ARRIVAL_TIME_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(STAFFED_GATE_ARRIVAL_MANUAL_GATE_PASSENGERS_LBL.isDisplayed(),
+                "Actual Value: '" + STAFFED_GATE_ARRIVAL_MANUAL_GATE_PASSENGERS_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(STAFFED_GATE_ARRIVAL_STATUS_LBL.isDisplayed(),
+                "Actual Value: '" + STAFFED_GATE_ARRIVAL_STATUS_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(STAFFED_GATE_ARRIVAL_OFFICERS_REQUIRED_TH.isDisplayed(),
+                "Actual Value: '" + STAFFED_GATE_ARRIVAL_OFFICERS_REQUIRED_TH.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(STAFFED_GATE_DEPARTURE_TIME_LBL.isDisplayed(),
+                "Actual Value: '" + STAFFED_GATE_DEPARTURE_TIME_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(STAFFED_GATE_DEPARTURE_MANUAL_GATE_PASSENGERS_LBL.isDisplayed(),
+                "Actual Value: '" + STAFFED_GATE_DEPARTURE_MANUAL_GATE_PASSENGERS_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(STAFFED_GATE_DEPARTURE_STATUS_LBL.isDisplayed(),
+                "Actual Value: '" + STAFFED_GATE_DEPARTURE_STATUS_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(STAFFED_GATE_DEPARTURE_OFFICERS_REQUIRED_LBL.isDisplayed(),
+                "Actual Value: '" + STAFFED_GATE_DEPARTURE_OFFICERS_REQUIRED_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertAll();
     }
 }
