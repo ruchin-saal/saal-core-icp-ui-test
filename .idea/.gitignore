@@ -1,3 +1,61 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
+# Ignore Maven and Gradle build directories
+/target/
+/bin/
+/out/
+
+# Ignore the .idea directory (for IntelliJ IDEA)
+/.idea/
+
+# Ignore Eclipse project files
+.project
+.classpath
+.settings/
+
+# Ignore log files
+*.log
+
+# Ignore dependency directories
+/.mvn/
+/.gradle/
+
+# Ignore Selenium and other downloaded WebDriver binaries
+webdriver/
+chromedriver.exe
+geckodriver.exe
+IEDriverServer.exe
+
+# Ignore IDE-specific files (e.g., IntelliJ, Eclipse)
+*.iml
+*.iws
+*.ipr
+
+# Ignore compiled Java class files
+*.class
+
+# Ignore JAR files
+*.jar
+
+# Ignore .DS_Store (macOS)
+.DS_Store
+
+# Ignore .vscode directory (VSCode)
+.vscode/
+
+# Ignore node_modules (if using Node.js or JavaScript for tests)
+node_modules/
+
+# Ignore configuration files
+*.properties
+*.yml
+
+# Ignore temporary files created by IDE
+*.swp
+*.swo
+
+# Ignore the build tool's cache (for Maven/Gradle)
+*.m2/
+
