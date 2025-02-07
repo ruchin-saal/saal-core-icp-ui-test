@@ -4,10 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.TimeoutException;
+import utils.Assertions;
+import utils.SeleniumWait;
 
 import java.time.Duration;
 import java.util.logging.Logger;
@@ -15,43 +19,95 @@ import java.util.concurrent.TimeUnit;
 
 public class ICPPage {
     // Locators for login page
-    public static final By USERNAME_TB = By.id("nce-input");
-    public static final By PASSWORD_TB = By.id("icp-input-password");
-    public static final By LOGIN_BTN = By.id("nce-login-btn");
+    @FindBy(how = How.ID, using = "nce-input")
+    WebElement USERNAME_TB;
+    @FindBy(how = How.ID, using = "icp-input-password")
+    WebElement PASSWORD_TB;
+    @FindBy(how = How.ID, using = "nce-login-btn")
+    WebElement LOGIN_BTN;
 
     // Locators for Use Case 1 (Passenger Forecasting Page)
-    public static final By PASSENGER_FORECASTING_LINK = By.xpath("//span[text()='Passenger Forecasting']");
-    public static final By AIRCRAFT_ACTIVITY_LBL = By.xpath("//span[text()='Aircraft Activity']");
-    public static final By EMIRATES_CODE_DD = By.xpath("//span[@class='ant-select-selection-item']");
+    @FindBy(how = How.XPATH, using = "//span[text()='Passenger Forecasting']")
+    WebElement PASSENGER_FORECASTING_LINK;
+    @FindBy(how = How.XPATH, using = "//span[text()='Aircraft Activity']")
+    WebElement AIRCRAFT_ACTIVITY_LBL;
+    @FindBy(how = How.XPATH, using = "//span[@class='ant-select-selection-item']")
+    WebElement EMIRATES_CODE_DD;
+    @FindBy(how = How.XPATH, using = "//div[@class='ant-picker-input']")
+    WebElement CALENDAR_BTN;
+    @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Passenger Forecasting for Shift Optimisation')]")
+    WebElement PASSENGER_FORECASTING_LBL;
     public static final By CALENDER_BTN = By.xpath("//div[@class='ant-picker-input']");
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Passengers Volume:')]")
+    WebElement FORECAST_DATA_CHART_LBL;
+    @FindBy(how = How.XPATH, using = "//span[text()='Aircraft Activity']//following::h4/span")
+    WebElement AIRCRAFT_ACTIVITY_LBL1;
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Passengers Traffic')]//following::h4/span")
+    WebElement EXPECTED_PASSENGERS_TRAFFIC_LBL;
+    @FindBy(how = How.XPATH, using = "//span[text()='Staffed Gate Passengers']//following::h4/span")
+    WebElement STAFFED_GATE_PASSENGERS_LBL;
+    @FindBy(how = How.XPATH, using = "//span[text()='E-Gate Passengers']//following::h4/span")
+    WebElement E_GATE_PASSENGERS_LBL;
+    @FindBy(how = How.XPATH, using = "//span[text()='Staffed Gate - Arrival']//following::h4/span")
+    WebElement STAFFED_GATE_ARRIVAL_LBL;
+    @FindBy(how = How.XPATH, using = "//span[text()='Staffed Gate - Departure']//following::h4/span")
+    WebElement STAFFED_GATE_DEPARTURE_LBL;
+    @FindBy(how = How.XPATH, using = "//span[text()='% of Passengers in Transit']//following::h4/span")
+    WebElement PASSENGERS_IN_TRANSIT_LBL;
 
     // Locators for Use Case 2 (Name Origin Explorer Page)
-    public static final By NAME_ORIGIN_EXPLORER_LINK = By.xpath("//span[text()='Name Origin Explorer']");
-    public static final By FULLNAME_TB = By.xpath("//input[@placeholder='Enter Full Name']");
-    public static final By RESIDENCY_DD = By.xpath("//input[@id='rc_select_3']");
-    public static final By PREDICT_ORIGIN_BTN = By.xpath("//span[text()='Predict Origin']");
+    @FindBy(how = How.XPATH, using = "//span[text()='Name Origin Explorer']")
+    WebElement NAME_ORIGIN_EXPLORER_LINK;
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='Enter Full Name']")
+    WebElement FULLNAME_TB;
+    @FindBy(how = How.XPATH, using = "//input[@id='rc_select_3']")
+    WebElement RESIDENCY_DD;
+    @FindBy(how = How.XPATH, using = "//span[text()='Predict Origin']")
+    WebElement PREDICT_ORIGIN_BTN;
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Origin of Names Exploration')]")
+    WebElement NAME_ORIGIN_LBL;
 
     // Locators for Use Dashboard 1 (Expats Residency Page)
-    public static final By EXPATS_RESIDENCY_LINK = By.xpath("//span[text()='Expats Residency']");
-    public static final By ALL_NATIONALITIES_LBL = By.xpath("//span[text()='All Nationalities']");
-    public static final By APPLY_ALL_BTN = By.xpath("//button/span[text()='Apply All']");
-    public static final By EMIRATES_DB1_DD = By.xpath("//input[@id='rc_select_1']");
-    public static final By NATIONALITY_DB1_DD = By.xpath("//input[@id='rc_select_2']");
+    @FindBy(how = How.XPATH, using = "//span[text()='Expats Residency']")
+    WebElement EXPATS_RESIDENCY_LINK;
+    @FindBy(how = How.XPATH, using = "//span[text()='All Nationalities']")
+    WebElement ALL_NATIONALITIES_LBL;
+    @FindBy(how = How.XPATH, using = "//button/span[text()='Apply All']")
+    WebElement APPLY_ALL_BTN;
+    @FindBy(how = How.XPATH, using = "//input[@id='rc_select_1']")
+    WebElement EMIRATES_DB1_DD;
+    @FindBy(how = How.XPATH, using = "//input[@id='rc_select_2']")
+    WebElement NATIONALITY_DB1_DD;
+    @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Expats Residency')]")
+    WebElement EXPATS_RESIDENCY_LBL;
 
     // Locators for Use Dashboard 2 (Active Residency Page)
-    public static final By ACTIVE_RESIDENCY_LINK = By.xpath("//span[text()='Active Residency']");
-    public static final By TOTAL_ACTIVE_RESIDENTS_LBL = By.xpath("//span[text()='Total Active Residents']");
-    public static final By OTHER_FILTER_BTN = By.xpath("//span[text()='Other Filters']");
-    public static final By NATIONALITY_DB2_DD = By.xpath("//input[@id='rc_select_1']");
-    public static final By EMIRATES_DB2_DD = By.xpath("//input[@id='rc_select_2']");
-    public static final By RESIDENCY_TYPE_DB2_DD = By.xpath("//input[@id='rc_select_3']");
+    @FindBy(how = How.XPATH, using = "//span[text()='Active Residency']")
+    WebElement ACTIVE_RESIDENCY_LINK;
+    @FindBy(how = How.XPATH, using = "//span[text()='Total Active Residents']")
+    WebElement TOTAL_ACTIVE_RESIDENTS_LBL;
+    @FindBy(how = How.XPATH, using = "//span[text()='Other Filters']")
+    WebElement OTHER_FILTER_BTN;
+    @FindBy(how = How.XPATH, using = "//input[@id='rc_select_1']")
+    WebElement NATIONALITY_DB2_DD;
+    @FindBy(how = How.XPATH, using = "//input[@id='rc_select_2']")
+    WebElement EMIRATES_DB2_DD;
+    @FindBy(how = How.XPATH, using = "//input[@id='rc_select_3']")
+    WebElement RESIDENCY_TYPE_DB2_DD;
+    @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Active Residency')]")
+    WebElement ACTIVE_RESIDENCY_LBL;
 
     // Locators for Use Dashboard 3 (Active General Page)
-    public static final By ACTIVE_GENERAL_LINK = By.xpath("//span[text()='Active General']");
-    public static final By NATIONALITY_DB3_DD = By.xpath("//input[@id='rc_select_1']");
-    public static final By EMIRATES_DB3_DD = By.xpath("//input[@id='rc_select_2']");
-    public static final By TOTAL_ACTIVE_GENERAL_POPULATION_LBL = By.xpath("//span[text()='Total Active General Population']");
-
+    @FindBy(how = How.XPATH, using = "//span[text()='Active General']")
+    WebElement ACTIVE_GENERAL_LINK;
+    @FindBy(how = How.XPATH, using = "//input[@id='rc_select_1']")
+    WebElement NATIONALITY_DB3_DD;
+    @FindBy(how = How.XPATH, using = "//input[@id='rc_select_2']")
+    WebElement EMIRATES_DB3_DD;
+    @FindBy(how = How.XPATH, using = "//span[text()='Total Active General Population']")
+    WebElement TOTAL_ACTIVE_GENERAL_POPULATION_LBL;
+    @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Active General Population')]")
+    WebElement ACTIVE_GENERAL_POPULATION_LBL;
 
     // WebDriver instance
     private static final Logger logger = Logger.getLogger(ICPPage.class.getName());
@@ -74,19 +130,17 @@ public class ICPPage {
             // Wait for the username field to be clickable
             logger.info("Waiting for the username field to be clickable.");
             WebElement usernameField = wait.until(ExpectedConditions.elementToBeClickable(USERNAME_TB));
-
             // Wait for the password field to be visible
             logger.info("Waiting for the password field to be visible.");
-            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(PASSWORD_TB));
-
+            SeleniumWait.waitUntilVisibilityOfElement(driver,PASSWORD_TB, 15);
             // Clear the fields and enter valid credentials
             logger.info("Clearing username and password fields.");
             usernameField.clear();
-            passwordField.clear();
+            PASSWORD_TB.clear();
             logger.info("Entering username.");
             usernameField.sendKeys(username);
             logger.info("Entering password.");
-            passwordField.sendKeys(password);
+            PASSWORD_TB.sendKeys(password);
 
             // Wait for the login button to be clickable and click it
             logger.info("Waiting for the login button to be clickable.");
@@ -215,8 +269,6 @@ public class ICPPage {
         }
     }
 
-
-
     public void selectEmirates(String emirates, By emirateDD) {
         try {
             logger.info("Selecting emirates: " + emirates);
@@ -242,7 +294,6 @@ public class ICPPage {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             WebElement nationalityElement = wait.until(ExpectedConditions.elementToBeClickable(nationalityDD));
             nationalityElement.click();
-
             wait.until(ExpectedConditions.visibilityOf(nationalityElement));
             Actions actions = new Actions(driver);
             actions.sendKeys(nationalityElement, nationality).perform();
@@ -372,22 +423,17 @@ public class ICPPage {
     public void selectDate(String date) {
         try {
             logger.info("Waiting for the date picker to be ready");
-
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             WebElement datePickerElement = wait.until(ExpectedConditions.elementToBeClickable(CALENDER_BTN));
             datePickerElement.click();
-
             // Select the specific date
             String dateOptionXpath = "//div[@class='ant-picker-cell-inner'][text()='" + date + "']";
             WebElement dateOptionElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dateOptionXpath)));
             dateOptionElement.click();
-
             logger.info("Date '" + date + "' selected successfully");
-
             // Optionally wait for verification
             wait.until(ExpectedConditions.elementToBeClickable(AIRCRAFT_ACTIVITY_LBL));
             logger.info("Post click verification done");
-
             // Optional: wait for a few seconds
             Thread.sleep(5000);
         } catch (Exception e) {
@@ -395,4 +441,50 @@ public class ICPPage {
         }
     }
 
+    public void validatePassengerForecastingHeading(String expectedText){
+        validatePageHeading(PASSENGER_FORECASTING_LBL.getText(), expectedText);
+    }
+
+    public void validateNameOriginHeading(String expectedText){
+        validatePageHeading(NAME_ORIGIN_LBL.getText(), expectedText);
+    }
+
+    public void validateExpatsResidencyHeading(String expectedText){
+        validatePageHeading(EXPATS_RESIDENCY_LBL.getText(), expectedText);
+    }
+
+    public void validateActiveResidencyHeading(String expectedText){
+        validatePageHeading(ACTIVE_RESIDENCY_LBL.getText(), expectedText);
+    }
+
+    public void validateActiveGeneralHeading(String expectedText){
+        validatePageHeading(ACTIVE_GENERAL_POPULATION_LBL.getText(), expectedText);
+    }
+
+    public void validatePageHeading(String actualText,String expectedText){
+        Assertions.assertTrue(actualText.equals(expectedText),
+                "Actual Value: "+actualText+" Expected Value: "+expectedText);
+    }
+
+    public void validateExpectedPassengersVolumeElements(){
+        SeleniumWait.waitUntilVisibilityOfElement(driver,AIRCRAFT_ACTIVITY_LBL, 20);
+        Assertions.softAssertTrue(FORECAST_DATA_CHART_LBL.isDisplayed(),
+                "Actual Value: '" + FORECAST_DATA_CHART_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(!AIRCRAFT_ACTIVITY_LBL.getText().equals("-"),
+                "Actual Value: '" + AIRCRAFT_ACTIVITY_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertTrue(!EXPECTED_PASSENGERS_TRAFFIC_LBL.getText().equals("-"),
+                "Actual Value: '" + EXPECTED_PASSENGERS_TRAFFIC_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertFalse(!STAFFED_GATE_PASSENGERS_LBL.getText().equals("-"),
+                "Actual Value: '" + STAFFED_GATE_PASSENGERS_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertFalse(!E_GATE_PASSENGERS_LBL.getText().equals("-"),
+                "Actual Value: '" + E_GATE_PASSENGERS_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertFalse(!STAFFED_GATE_ARRIVAL_LBL.getText().equals("-"),
+                "Actual Value: '" + STAFFED_GATE_ARRIVAL_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertFalse(!STAFFED_GATE_DEPARTURE_LBL.getText().equals("-"),
+                "Actual Value: '" + STAFFED_GATE_DEPARTURE_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertFalse(!PASSENGERS_IN_TRANSIT_LBL.getText().equals("-"),
+                "Actual Value: '" + PASSENGERS_IN_TRANSIT_LBL.getText() + "' is appearing blank while looking for real data");
+        Assertions.softAssertAll();
+
+    }
 }

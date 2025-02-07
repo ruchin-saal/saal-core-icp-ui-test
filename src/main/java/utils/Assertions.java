@@ -64,6 +64,10 @@ public class Assertions {
         softAssert.assertTrue(value, "Value is not matching expecting true but actual is" + value);
     }
 
+    public static void softAssertFalse(Boolean value, String feature) {
+        softAssert.assertFalse(value, "Value is: " + value+" "+feature);
+    }
+
     public static void softAssertFalse(Boolean value) {
         softAssert.assertFalse(value, "Value is: " + value);
     }
