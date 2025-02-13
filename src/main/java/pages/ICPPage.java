@@ -97,6 +97,8 @@ public class ICPPage {
     WebElement STAFFED_GATE_DEPARTURE_STATUS_LBL;
     @FindBy(how = How.XPATH, using = "//strong[text()='Staffed Gate - Departure']//following::th[contains(text(),'Officers Required')]")
     WebElement STAFFED_GATE_DEPARTURE_OFFICERS_REQUIRED_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Total Residents By Year']//following::div[contains(@id,'highchart')]")
+    WebElement TOTAL_RESIDENTS_BY_YEAR_CHART_DIV;
 
     // Locators for Use Case 2 (Name Origin Explorer Page)
     @FindBy(how = How.XPATH, using = "//span[text()='Name Origin Explorer']")
@@ -149,7 +151,20 @@ public class ICPPage {
     WebElement OCEANIA_LBL;
     @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Expatriate By Region')]//following::span[text()='Seven seas']")
     WebElement SEVEN_SEAS_LBL;
-
+    @FindBy(how = How.XPATH, using = "//span[text()='Total Visa Holders']")
+    WebElement TOTAL_VISA_HOLDERS_LBL;
+    @FindBy(how = How.XPATH, using = "//span[text()='Golden Visa Holders']")
+    WebElement GOLDEN_VISA_HOLDERS_LBL;
+    @FindBy(how = How.XPATH, using = "//span[text()='Total Border Movements']")
+    WebElement TOTAL_BORDER_MOVEMENTS_LBL;
+    @FindBy(how = How.XPATH, using = "//span[text()='Male Expatriates']")
+    WebElement MALE_EXPATRIATES_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Nationality By Gender']//following::div[contains(@style,'color')]")
+    WebElement NATIONALITY_BY_GENDER_COLOR_DIV;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Total Expat Residents By Emirates']//following::div[contains(@id,'highchart')]")
+    WebElement TOTAL_EXPAT_RESIDENTS_CHART_DIV;
+    @FindBy(how = How.XPATH, using = "(//strong[contains(text(),'Expatriate By Region')]//following::button)[2]")
+    WebElement RIGHT_SCROLL_BTN;
 
     // Locators for Use Dashboard 2 (Active Residency Page)
     @FindBy(how = How.XPATH, using = "//span[text()='Active Residency']")
@@ -166,6 +181,44 @@ public class ICPPage {
     WebElement RESIDENCY_TYPE_DB2_DD;
     @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Active Residency')]")
     WebElement ACTIVE_RESIDENCY_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Residents By Region & Nationality')]//following::span[text()='All Nationalities']")
+    WebElement DB2_ALL_NATIONALITY_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Residents By Region & Nationality')]//following::span[text()='Europe']")
+    WebElement DB2_EUROPE_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Residents By Region & Nationality')]//following::span[text()='Africa']")
+    WebElement DB2_AFRICA_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Residents By Region & Nationality')]//following::span[text()='Asia']")
+    WebElement DB2_ASIA_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Residents By Region & Nationality')]//following::span[text()='North America']")
+    WebElement DB2_NORTH_AMERICA_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Residents By Region & Nationality')]//following::span[text()='South America']")
+    WebElement DB2_SOUTH_AMERICA_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Residents By Region & Nationality')]//following::span[text()='Oceania']")
+    WebElement DB2_OCEANIA_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Residents By Region & Nationality')]//following::span[text()='Seven seas']")
+    WebElement DB2_SEVEN_SEAS_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Residents By Gender']//following::span[text()='Total Active Residents']")
+    WebElement DB2_TOTAL_ACTIVE_RESIDENTS_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Residents By Gender']//following::span[text()='Males']")
+    WebElement DB2_MALES_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Residents By Gender']//following::span[text()='Females']")
+    WebElement DB2_FEMALES_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Residents By Residency Type']//following::span[text()='Service Residents']")
+    WebElement DB2_SERVICE_RESIDENTS_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Residents By Residency Type']//following::span[text()='Work Residents']")
+    WebElement DB2_WORK_RESIDENTS_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Residents By Residency Type']//following::span[text()='Residents']")
+    WebElement DB2_RESIDENTS_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Residents By Age Range']//following::div[contains(@style,'color')]")
+    WebElement DB2_RESIDENTS_BY_AGE_RANGE_COLOR_DIV;
+    @FindBy(how = How.XPATH, using = "//strong[text()='Residents By Emirates']//following::div[contains(@id,'highchart')]")
+    WebElement DB2_RESIDENTS_BY_EMIRATES_CHART;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Residents By Profession')]//following::table/tbody/tr/td")
+    WebElement DB2_RESIDENTS_BY_PROFESSION_TABLE;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Residents By Sponsor')]//following::table/tbody/tr/td")
+    WebElement DB2_RESIDENTS_BY_SPONSOR_TABLE;
+    @FindBy(how = How.XPATH, using = "(//strong[contains(text(),'Residents By Region & Nationality')]//following::button)[2]")
+    WebElement DB2_RIGHT_SCROLL_BTN;
 
     // Locators for Use Dashboard 3 (Active General Page)
     @FindBy(how = How.XPATH, using = "//span[text()='Active General']")
@@ -292,9 +345,9 @@ public class ICPPage {
 
     public void selectFiltersForDashboard2(String nationality, String emirates, String residencyType,
                                            String startingAgeRange, String endingAgeRange, String gender) {
-        selectNationality(nationality, By.xpath("//input[@id='rc_select_1']"));
-        selectEmirates(emirates, By.xpath("//input[@id='rc_select_2']"));
-        selectResidency(residencyType, By.xpath("//input[@id='rc_select_3']"));
+        selectNationality(nationality, By.xpath("(//input[contains(@id,'rc_select_')])[1]"));
+        selectEmirates(emirates, By.xpath("(//input[contains(@id,'rc_select_')])[2]"));
+        selectResidency(residencyType, By.xpath("(//input[contains(@id,'rc_select_')])[3]"));
         selectOtherFilter(startingAgeRange, endingAgeRange, gender);
         selectApplyAllButton();
     }
@@ -311,6 +364,8 @@ public class ICPPage {
         try {
             logger.info("Selecting gender: " + gender);
             String genderXpath = "//div[@class='ant-segmented-item-label']/span[text()='" + gender + "']";
+            WebElement genderXpaths=driver.findElement(By.xpath(genderXpath));
+            SeleniumWait.waitForElementToBeClickable(driver, genderXpaths, 30);
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             WebElement genderElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(genderXpath)));
             genderElement.click();
@@ -342,14 +397,16 @@ public class ICPPage {
     public void selectEmirates(String emirates, By emirateDD) {
         try {
             logger.info("Selecting emirates: " + emirates);
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
             WebElement emiratesElement = wait.until(ExpectedConditions.elementToBeClickable(emirateDD));
             emiratesElement.click();
 
             // Wait for input field visibility and enter the emirates code
-            wait.until(ExpectedConditions.visibilityOf(emiratesElement));
+            SeleniumWait.waitForElementToBeClickable(driver, emiratesElement, 20);
             Actions actions = new Actions(driver);
+            SeleniumWait.pauseExecution(2);
             actions.sendKeys(emiratesElement, emirates).perform();
+            SeleniumWait.pauseExecution(2);
             actions.sendKeys(emiratesElement, "\n").perform();
 
             logger.info("Emirates '" + emirates + "' selected successfully.");
@@ -364,9 +421,11 @@ public class ICPPage {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             WebElement nationalityElement = wait.until(ExpectedConditions.elementToBeClickable(nationalityDD));
             nationalityElement.click();
-            wait.until(ExpectedConditions.visibilityOf(nationalityElement));
+            SeleniumWait.waitForElementToBeClickable(driver, nationalityElement, 30);
             Actions actions = new Actions(driver);
+            SeleniumWait.pauseExecution(2);
             actions.sendKeys(nationalityElement, nationality).perform();
+            SeleniumWait.pauseExecution(2);
             actions.sendKeys(nationalityElement, "\n").perform();
             logger.info("Nationality '" + nationality + "' selected successfully.");
         } catch (Exception e) {
@@ -379,6 +438,7 @@ public class ICPPage {
             logger.info("Waiting for the Apply All button to be ready for click.");
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             WebElement applyAllButton = wait.until(ExpectedConditions.elementToBeClickable(APPLY_ALL_BTN));
+            SeleniumWait.pauseExecution(3);
             applyAllButton.click();
             wait.until(ExpectedConditions.elementToBeClickable(ALL_NATIONALITIES_LBL));
             logger.info("Post click verification done.");
@@ -393,18 +453,20 @@ public class ICPPage {
             logger.info("Selecting Other Filter");
 
             // Click 'Other Filters' button
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement otherFiltersButton = wait.until(ExpectedConditions.elementToBeClickable(OTHER_FILTER_BTN));
-            otherFiltersButton.click();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            SeleniumWait.waitForElementToBeClickable(driver,OTHER_FILTER_BTN,30);
+            OTHER_FILTER_BTN.click();
 
             // Select starting age range
             String startingAgeXpath = "//div[text()='" + startingAgeRange + "']";
-            WebElement startingAgeElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(startingAgeXpath)));
+            WebElement startingAgeElement = driver.findElement(By.xpath(startingAgeXpath));
+            SeleniumWait.waitForElementToBeClickable(driver,startingAgeElement,10);
             startingAgeElement.click();
 
             // Select ending age range
             String endingAgeXpath = "//div[text()='" + endingAgeRange + "']";
-            WebElement endingAgeElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(endingAgeXpath)));
+            WebElement endingAgeElement = driver.findElement(By.xpath(endingAgeXpath));
+            SeleniumWait.waitForElementToBeClickable(driver,endingAgeElement,10);
             endingAgeElement.click();
 
             // Select gender
@@ -425,11 +487,11 @@ public class ICPPage {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             WebElement residencyElement = wait.until(ExpectedConditions.elementToBeClickable(residencyDd));
             residencyElement.click();
-
-            // Wait for the input field to be interactable and send keys
             wait.until(ExpectedConditions.visibilityOf(residencyElement));
             Actions actions = new Actions(driver);
+            SeleniumWait.pauseExecution(2);
             actions.sendKeys(residencyElement, residency).perform();
+            SeleniumWait.pauseExecution(2);
             actions.sendKeys(residencyElement, "\n").perform();
 
             logger.info("Residency '" + residency + "' selected successfully");
@@ -648,24 +710,160 @@ public class ICPPage {
     }
 
     public void validateContinent() {
+        SeleniumWait.waitForElementToBeClickable(driver, ALL_NATIONALITY_LBL,30);
         Assertions.softAssertTrue(ALL_NATIONALITY_LBL.isDisplayed(),
-                "Actual Value: '" + ALL_NATIONALITY_LBL.getText() + "' is not appearing");
+                "Actual Value: '" + ALL_NATIONALITY_LBL.getText() + "' ALL_NATIONALITY_LBL is not appearing");
         Assertions.softAssertTrue(EUROPE_LBL.isDisplayed(),
-                "Actual Value: '" + EUROPE_LBL.getText() + "' is not appearing");
+                "Actual Value: '" + EUROPE_LBL.getText() + "' EUROPE_LBL is not appearing");
         Assertions.softAssertTrue(AFRICA_LBL.isDisplayed(),
-                "Actual Value: '" + AFRICA_LBL.getText() + "' is not appearing");
+                "Actual Value: '" + AFRICA_LBL.getText() + "' AFRICA_LBL is not appearing");
         Assertions.softAssertTrue(ASIA_LBL.isDisplayed(),
-                "Actual Value: '" + ASIA_LBL.getText() + "' is not appearing");
+                "Actual Value: '" + ASIA_LBL.getText() + "' ASIA_LBL is not appearing");
         Assertions.softAssertTrue(NORTH_AMERICA_LBL.isDisplayed(),
-                "Actual Value: '" + NORTH_AMERICA_LBL.getText() + "' is not appearing");
+                "Actual Value: '" + NORTH_AMERICA_LBL.getText() + "' NORTH_AMERICA_LBL is not appearing");
         Assertions.softAssertTrue(SOUTH_AMERICA_LBL.isDisplayed(),
-                "Actual Value: '" + SOUTH_AMERICA_LBL.getText() + "' is not appearing");
+                "Actual Value: '" + SOUTH_AMERICA_LBL.getText() + "' SOUTH_AMERICA_LBL is not appearing");
         Assertions.softAssertTrue(OCEANIA_LBL.isDisplayed(),
-                "Actual Value: '" + OCEANIA_LBL.getText() + "' is not appearing");
+                "Actual Value: '" + OCEANIA_LBL.getText() + "' OCEANIA_LBL is not appearing");
+        RIGHT_SCROLL_BTN.click();
+        SeleniumWait.waitUntilVisibilityOfElement(driver, SEVEN_SEAS_LBL, 20);
         Assertions.softAssertTrue(SEVEN_SEAS_LBL.isDisplayed(),
-                "Actual Value: '" + SEVEN_SEAS_LBL.getText() + "' is not appearing");
+                "Actual Value: '" + SEVEN_SEAS_LBL.getText() + "' SEVEN_SEAS_LBL is not appearing");
         Assertions.softAssertAll();
     }
 
+    public void validateCountryNameInCountryList(String nationality) {
+        String locatorNationality="//th[text()='Nationality']//following::span[text()='"+nationality+"']";
+        WebElement nationalityXpath=driver.findElement(By.xpath(locatorNationality));
+        SeleniumWait.waitUntilVisibilityOfElement(driver, nationalityXpath, 20);
+        Assertions.softAssertTrue(nationalityXpath.isDisplayed(),
+                "Actual Value: '" + nationalityXpath.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
 
+    public void validateVisaAndExpatriatesData() {
+        Assertions.softAssertTrue(TOTAL_VISA_HOLDERS_LBL.isDisplayed(),
+                "Actual Value: '" + TOTAL_VISA_HOLDERS_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(GOLDEN_VISA_HOLDERS_LBL.isDisplayed(),
+                "Actual Value: '" + GOLDEN_VISA_HOLDERS_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(TOTAL_BORDER_MOVEMENTS_LBL.isDisplayed(),
+                "Actual Value: '" + TOTAL_BORDER_MOVEMENTS_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(MALE_EXPATRIATES_LBL.isDisplayed(),
+                "Actual Value: '" + MALE_EXPATRIATES_LBL.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
+
+    public void validateNationalityByGender() {
+        Assertions.softAssertTrue(NATIONALITY_BY_GENDER_COLOR_DIV.isDisplayed(),
+                "Actual Value: '" + NATIONALITY_BY_GENDER_COLOR_DIV.getText() + "' is not appearing or styled correctly.");
+        Assertions.softAssertAll();
+    }
+
+    public void validateTotalExpatResidentsByEmirates(String emirates) {
+        String locatorEmirates="//strong[text()='Applied Filters']//following::strong[text()='"+emirates+"']";
+        WebElement xpathEmirates=driver.findElement(By.xpath(locatorEmirates));
+        SeleniumWait.waitUntilVisibilityOfElement(driver, xpathEmirates, 20);
+        Assertions.softAssertTrue(TOTAL_EXPAT_RESIDENTS_CHART_DIV.isDisplayed(),
+                "Actual Value: '" + TOTAL_EXPAT_RESIDENTS_CHART_DIV.getText() + "' is not appearing or not rendered correctly.");
+        Assertions.softAssertTrue(xpathEmirates.isDisplayed(),
+                "Actual Value: '" + xpathEmirates.getText() + "' is not appearing in the list.");
+        Assertions.softAssertAll();
+    }
+
+    public void validateTotalResidentsByYearChart() {
+        Assertions.softAssertTrue(TOTAL_RESIDENTS_BY_YEAR_CHART_DIV.isDisplayed(),
+                "Actual Value: '" + TOTAL_RESIDENTS_BY_YEAR_CHART_DIV.getText() + "' is not appearing or not rendered correctly.");
+        Assertions.softAssertAll();
+    }
+
+    public void validateAppliedFilterForDashboard2(String nationality, String emirates, String residencyType, String ageRange, String gender) {
+        // Dynamic XPath locators based on the applied filters
+        String locatorNationality = "//strong[text()='Applied Filters']//following::strong[text()='" + nationality + "']";
+        WebElement nationalityXpath = driver.findElement(By.xpath(locatorNationality));
+        String locatorEmirates = "//strong[text()='Applied Filters']//following::strong[text()='" + emirates + "']";
+        WebElement emiratesXpath = driver.findElement(By.xpath(locatorEmirates));
+        String locatorResidencyType = "//strong[text()='Applied Filters']//following::strong[text()='" + residencyType + "']";
+        WebElement residencyTypeXpath = driver.findElement(By.xpath(locatorResidencyType));
+        String locatorAgeRange = "//strong[text()='Applied Filters']//following::strong[text()='" + ageRange + "']";
+        WebElement ageRangeXpath = driver.findElement(By.xpath(locatorAgeRange));
+        String locatorGender = "//strong[text()='Applied Filters']//following::strong[text()='" + gender + "']";
+        WebElement genderXpath = driver.findElement(By.xpath(locatorGender));
+        SeleniumWait.waitUntilVisibilityOfElement(driver, nationalityXpath, 30);
+        Assertions.softAssertTrue(nationalityXpath.isDisplayed(),
+                "Actual Value: '" + nationalityXpath.getText() + "' is not appearing");
+        Assertions.softAssertTrue(emiratesXpath.isDisplayed(),
+                "Actual Value: '" + emiratesXpath.getText() + "' is not appearing");
+        Assertions.softAssertTrue(residencyTypeXpath.isDisplayed(),
+                "Actual Value: '" + residencyTypeXpath.getText() + "' is not appearing");
+        Assertions.softAssertTrue(ageRangeXpath.isDisplayed(),
+                "Actual Value: '" + ageRangeXpath.getText() + "' is not appearing");
+        Assertions.softAssertTrue(genderXpath.isDisplayed(),
+                "Actual Value: '" + genderXpath.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
+
+    public void validateContinentDashboard2() {
+        SeleniumWait.waitForElementToBeClickable(driver, DB2_ALL_NATIONALITY_LBL,30);
+        Assertions.softAssertTrue(DB2_ALL_NATIONALITY_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_ALL_NATIONALITY_LBL.getText() + "' ALL_NATIONALITY_LBL is not appearing");
+        Assertions.softAssertTrue(DB2_EUROPE_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_EUROPE_LBL.getText() + "' EUROPE_LBL is not appearing");
+        Assertions.softAssertTrue(DB2_AFRICA_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_AFRICA_LBL.getText() + "' AFRICA_LBL is not appearing");
+        Assertions.softAssertTrue(DB2_ASIA_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_ASIA_LBL.getText() + "' ASIA_LBL is not appearing");
+        Assertions.softAssertTrue(DB2_NORTH_AMERICA_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_NORTH_AMERICA_LBL.getText() + "' NORTH_AMERICA_LBL is not appearing");
+        Assertions.softAssertTrue(DB2_SOUTH_AMERICA_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_SOUTH_AMERICA_LBL.getText() + "' SOUTH_AMERICA_LBL is not appearing");
+        Assertions.softAssertTrue(DB2_OCEANIA_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_OCEANIA_LBL.getText() + "' OCEANIA_LBL is not appearing");
+        DB2_RIGHT_SCROLL_BTN.click();
+        SeleniumWait.waitUntilVisibilityOfElement(driver, DB2_SEVEN_SEAS_LBL, 20);
+        Assertions.softAssertTrue(DB2_SEVEN_SEAS_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_SEVEN_SEAS_LBL.getText() + "' SEVEN_SEAS_LBL is not appearing");
+        Assertions.softAssertAll();
+    }
+
+    public void validateDB2ResidentsByGender() {
+        Assertions.softAssertTrue(DB2_TOTAL_ACTIVE_RESIDENTS_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_TOTAL_ACTIVE_RESIDENTS_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(DB2_MALES_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_MALES_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(DB2_FEMALES_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_FEMALES_LBL.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
+
+    public void validateDB2ResidentsByResidencyType() {
+        Assertions.softAssertTrue(DB2_SERVICE_RESIDENTS_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_SERVICE_RESIDENTS_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(DB2_WORK_RESIDENTS_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_WORK_RESIDENTS_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(DB2_RESIDENTS_LBL.isDisplayed(),
+                "Actual Value: '" + DB2_RESIDENTS_LBL.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
+
+    public void validateDB2ResidentsByAgeRange() {
+        Assertions.softAssertTrue(DB2_RESIDENTS_BY_AGE_RANGE_COLOR_DIV.isDisplayed(),
+                "Actual Value: '" + DB2_RESIDENTS_BY_AGE_RANGE_COLOR_DIV.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
+
+    public void validateDB2ResidentsByEmirates() {
+        Assertions.softAssertTrue(DB2_RESIDENTS_BY_EMIRATES_CHART.isDisplayed(),
+                "Actual Value: '" + DB2_RESIDENTS_BY_EMIRATES_CHART.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
+    public void validateDB2ResidentsByProfession() {
+        Assertions.softAssertTrue(DB2_RESIDENTS_BY_PROFESSION_TABLE.isDisplayed(),
+                "Actual Value: '" + DB2_RESIDENTS_BY_PROFESSION_TABLE.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
+    public void validateDB2ResidentsBySponsor() {
+        Assertions.softAssertTrue(DB2_RESIDENTS_BY_SPONSOR_TABLE.isDisplayed(),
+                "Actual Value: '" + DB2_RESIDENTS_BY_SPONSOR_TABLE.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
 }

@@ -111,6 +111,11 @@ public class ICPTest extends BaseClass {
                 getValueFromProperties("dashboard1Emirates"),
                 getValueFromProperties("dashboard1Country"));
         icpPage.validateContinent();
+        icpPage.validateCountryNameInCountryList(getValueFromProperties("dashboard1Country"));
+        icpPage.validateVisaAndExpatriatesData();
+        icpPage.validateNationalityByGender();
+        icpPage.validateTotalExpatResidentsByEmirates(getValueFromProperties("dashboard1Emirates"));
+        icpPage.validateTotalResidentsByYearChart();
     }
 
     @Test(description = "Visit Dashboard2(Active Residency) page is up and running", groups = {"regression", "smoke", "sanity"})
@@ -128,11 +133,30 @@ public class ICPTest extends BaseClass {
     @Description("Visit Dashboard2(Active Residency) Page and apply filters")
     @Story("Visit Dashboard2(Active Residency) Page and apply filters")
     @Severity(SeverityLevel.CRITICAL)
-    public void test_case_8() {
+    public void validateActiveGeneralPageWithFilter() {
         logger.info("Visit Dashboard2(Active Residency) Page and apply filters");
         icpPage.performLoginIntoICPApplication(getValueFromProperties("adminUserName"), getValueFromProperties("adminPassword"));
         icpPage.selectActiveResidencyPage();
-        icpPage.selectFiltersForDashboard2("Pakistan", "Abu Dhabi", "Work Residents", "0", "40", "Male");
+        icpPage.selectFiltersForDashboard2(getValueFromProperties("dashboard2Country"),
+                getValueFromProperties("dashboard2Emirates"),
+                getValueFromProperties("dashboard2WorkResidencyHeading"),
+                getValueFromProperties("dashboard2StartingAge"),
+                getValueFromProperties("dashboard2EndAge"),
+                getValueFromProperties("dashboard2Gender"));
+        String ageRange=getValueFromProperties("dashboard2StartingAge")+"-"+getValueFromProperties("dashboard2EndAge");
+        icpPage.validateAppliedFilterForDashboard2(getValueFromProperties("dashboard2Country"),
+                getValueFromProperties("dashboard2Emirates"),
+                getValueFromProperties("dashboard2WorkResidencyHeading"),
+                ageRange,
+                getValueFromProperties("dashboard2Gender"));
+        icpPage.validateDB2ResidentsByGender();
+        icpPage.validateDB2ResidentsByResidencyType();
+        icpPage.validateDB2ResidentsByAgeRange();
+        icpPage.validateDB2ResidentsByEmirates();
+        icpPage.validateContinentDashboard2();
+        icpPage.validateCountryNameInCountryList(getValueFromProperties("dashboard2Country"));
+        icpPage.validateDB2ResidentsByProfession();
+        icpPage.validateDB2ResidentsBySponsor();
     }
 
     @Test(description = "Visit Dashboard3(Active General) page is up and running", groups = {"regression", "smoke", "sanity"})
