@@ -25,26 +25,26 @@ public class ICPTest extends BaseClass {
         logger.info("Initializing the web-driver instance based on the things from the config file");
         startDriver();
         openBrowserWithBaseURL(WebDriverSessionManager.getDriver());
-        icpPage=new ICPPage(WebDriverSessionManager.getDriver());
+        icpPage = new ICPPage(WebDriverSessionManager.getDriver());
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         SeleniumUtils.terminateWindow(WebDriverSessionManager.getDriver(), Options.QUIT);
     }
-//    DONE
+
     @Description("Visit UC1(Passenger Forecasting) Page and validate page is up and running")
     @Story("Visit UC1(Passenger Forecasting) Page")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(description="Visit UC1(Passenger Forecasting) Page", groups = {"regression", "smoke", "sanity"})
-    public void verifyPassengerForecastingPage(){
+    @Test(description = "Visit UC1(Passenger Forecasting) Page", groups = {"regression", "smoke", "sanity"})
+    public void verifyPassengerForecastingPage() {
         logger.info("Verifying the Admin user logged-In successfully");
         icpPage.performLoginIntoICPApplication(getValueFromProperties("adminUserName"), getValueFromProperties("adminPassword"));
         logger.info("Verified the Admin user logged-In successfully & 'welcome message!!!");
         icpPage.selectPassengerForecastingPage();
         icpPage.validatePassengerForecastingHeading(getValueFromProperties("passengerForecastingHeading"));
     }
-    //    DONE
+
     @Test(description = "Visit UC1(Passenger Forecasting) Page and apply filters", groups = {"regression", "smoke", "sanity"})
     @Description("Visit UC1(Passenger Forecasting) Page and apply filters")
     @Story("Visit UC1(Passenger Forecasting) Page")
@@ -60,7 +60,7 @@ public class ICPTest extends BaseClass {
         icpPage.validatePassengersForecastAnalysis();
         icpPage.validateStaffedGatePassengersCount();
     }
-    //    DONE
+
     @Test(description = "Visit UC2(Name Origin Explorer) page is up and running", groups = {"regression", "smoke", "sanity"})
     @Description("Visit UC2(Name Origin Explorer) Page")
     @Story("Visit UC2(Name Origin Explorer) Page")
@@ -71,7 +71,7 @@ public class ICPTest extends BaseClass {
         icpPage.selectNameOriginExplorerPage();
         icpPage.validateNameOriginHeading(getValueFromProperties("nameOriginHeading"));
     }
-    //    DONE
+
     @Test(description = "Visit UC2(Name Origin Explorer) Page and apply filters", groups = {"regression", "smoke", "sanity"})
     @Description("Visit UC2(Name Origin Explorer) Page and apply filters")
     @Story("Visit UC2(Name Origin Explorer) Page and apply filters")
@@ -143,7 +143,7 @@ public class ICPTest extends BaseClass {
                 getValueFromProperties("dashboard2StartingAge"),
                 getValueFromProperties("dashboard2EndAge"),
                 getValueFromProperties("dashboard2Gender"));
-        String ageRange=getValueFromProperties("dashboard2StartingAge")+"-"+getValueFromProperties("dashboard2EndAge");
+        String ageRange = getValueFromProperties("dashboard2StartingAge") + "-" + getValueFromProperties("dashboard2EndAge");
         icpPage.validateAppliedFilterForDashboard2(getValueFromProperties("dashboard2Country"),
                 getValueFromProperties("dashboard2Emirates"),
                 getValueFromProperties("dashboard2WorkResidencyHeading"),

@@ -255,7 +255,7 @@ public class ICPPage {
             WebElement usernameField = wait.until(ExpectedConditions.elementToBeClickable(USERNAME_TB));
             // Wait for the password field to be visible
             logger.info("Waiting for the password field to be visible.");
-            SeleniumWait.waitUntilVisibilityOfElement(driver,PASSWORD_TB, 15);
+            SeleniumWait.waitUntilVisibilityOfElement(driver, PASSWORD_TB, 15);
             // Clear the fields and enter valid credentials
             logger.info("Clearing username and password fields.");
             usernameField.clear();
@@ -364,7 +364,7 @@ public class ICPPage {
         try {
             logger.info("Selecting gender: " + gender);
             String genderXpath = "//div[@class='ant-segmented-item-label']/span[text()='" + gender + "']";
-            WebElement genderXpaths=driver.findElement(By.xpath(genderXpath));
+            WebElement genderXpaths = driver.findElement(By.xpath(genderXpath));
             SeleniumWait.waitForElementToBeClickable(driver, genderXpaths, 30);
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             WebElement genderElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(genderXpath)));
@@ -454,19 +454,19 @@ public class ICPPage {
 
             // Click 'Other Filters' button
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            SeleniumWait.waitForElementToBeClickable(driver,OTHER_FILTER_BTN,30);
+            SeleniumWait.waitForElementToBeClickable(driver, OTHER_FILTER_BTN, 30);
             OTHER_FILTER_BTN.click();
 
             // Select starting age range
             String startingAgeXpath = "//div[text()='" + startingAgeRange + "']";
             WebElement startingAgeElement = driver.findElement(By.xpath(startingAgeXpath));
-            SeleniumWait.waitForElementToBeClickable(driver,startingAgeElement,10);
+            SeleniumWait.waitForElementToBeClickable(driver, startingAgeElement, 10);
             startingAgeElement.click();
 
             // Select ending age range
             String endingAgeXpath = "//div[text()='" + endingAgeRange + "']";
             WebElement endingAgeElement = driver.findElement(By.xpath(endingAgeXpath));
-            SeleniumWait.waitForElementToBeClickable(driver,endingAgeElement,10);
+            SeleniumWait.waitForElementToBeClickable(driver, endingAgeElement, 10);
             endingAgeElement.click();
 
             // Select gender
@@ -569,33 +569,33 @@ public class ICPPage {
         }
     }
 
-    public void validatePassengerForecastingHeading(String expectedText){
+    public void validatePassengerForecastingHeading(String expectedText) {
         validatePageHeading(PASSENGER_FORECASTING_LBL.getText(), expectedText);
     }
 
-    public void validateNameOriginHeading(String expectedText){
+    public void validateNameOriginHeading(String expectedText) {
         validatePageHeading(NAME_ORIGIN_LBL.getText(), expectedText);
     }
 
-    public void validateExpatsResidencyHeading(String expectedText){
+    public void validateExpatsResidencyHeading(String expectedText) {
         validatePageHeading(EXPATS_RESIDENCY_LBL.getText(), expectedText);
     }
 
-    public void validateActiveResidencyHeading(String expectedText){
+    public void validateActiveResidencyHeading(String expectedText) {
         validatePageHeading(ACTIVE_RESIDENCY_LBL.getText(), expectedText);
     }
 
-    public void validateActiveGeneralHeading(String expectedText){
+    public void validateActiveGeneralHeading(String expectedText) {
         validatePageHeading(ACTIVE_GENERAL_POPULATION_LBL.getText(), expectedText);
     }
 
-    public void validatePageHeading(String actualText,String expectedText){
+    public void validatePageHeading(String actualText, String expectedText) {
         Assertions.assertTrue(actualText.equals(expectedText),
-                "Actual Value: "+actualText+" Expected Value: "+expectedText);
+                "Actual Value: " + actualText + " Expected Value: " + expectedText);
     }
 
-    public void validateExpectedPassengersVolumeElements(){
-        SeleniumWait.waitUntilVisibilityOfElement(driver,AIRCRAFT_ACTIVITY_LBL, 20);
+    public void validateExpectedPassengersVolumeElements() {
+        SeleniumWait.waitUntilVisibilityOfElement(driver, AIRCRAFT_ACTIVITY_LBL, 20);
         Assertions.softAssertTrue(FORECAST_DATA_CHART_LBL.isDisplayed(),
                 "Actual Value: '" + FORECAST_DATA_CHART_LBL.getText() + "' is appearing blank while looking for real data");
         Assertions.softAssertTrue(!AIRCRAFT_ACTIVITY_LBL.getText().equals("-"),
@@ -615,8 +615,8 @@ public class ICPPage {
         Assertions.softAssertAll();
     }
 
-    public void validateStaffGateArrivalDeparture(){
-        SeleniumWait.waitUntilVisibilityOfElement(driver,ARRIVAL_SHIFT1_LBL, 20);
+    public void validateStaffGateArrivalDeparture() {
+        SeleniumWait.waitUntilVisibilityOfElement(driver, ARRIVAL_SHIFT1_LBL, 20);
         SeleniumUtils.scrollTillElementWithJS(driver, ARRIVAL_SHIFT1_LBL);
         Assertions.softAssertTrue(ARRIVAL_SHIFT1_LBL.isDisplayed(),
                 "Actual Value: '" + ARRIVAL_SHIFT1_LBL.getText() + "' is appearing blank while looking for real data");
@@ -645,15 +645,15 @@ public class ICPPage {
         Assertions.softAssertAll();
     }
 
-    public void validatePassengersForecastAnalysis(){
-        SeleniumWait.waitUntilVisibilityOfElement(driver,FORECAST_ANALYSIS_CHART, 20);
+    public void validatePassengersForecastAnalysis() {
+        SeleniumWait.waitUntilVisibilityOfElement(driver, FORECAST_ANALYSIS_CHART, 20);
         SeleniumUtils.scrollTillElementWithJS(driver, FORECAST_ANALYSIS_CHART);
         Assertions.softAssertTrue(FORECAST_ANALYSIS_CHART.isDisplayed(),
                 "Actual Value: '" + FORECAST_ANALYSIS_CHART.getText() + "' is appearing blank while looking for real data");
     }
 
-    public void validateStaffedGatePassengersCount(){
-        SeleniumWait.waitUntilVisibilityOfElement(driver,STAFFED_GATE_ARRIVAL_TIME_LBL, 20);
+    public void validateStaffedGatePassengersCount() {
+        SeleniumWait.waitUntilVisibilityOfElement(driver, STAFFED_GATE_ARRIVAL_TIME_LBL, 20);
         SeleniumUtils.scrollTillElementWithJS(driver, STAFFED_GATE_ARRIVAL_TIME_LBL);
         Assertions.softAssertTrue(STAFFED_GATE_ARRIVAL_TIME_LBL.isDisplayed(),
                 "Actual Value: '" + STAFFED_GATE_ARRIVAL_TIME_LBL.getText() + "' is appearing blank while looking for real data");
@@ -675,8 +675,8 @@ public class ICPPage {
     }
 
     public void validateNameResultPage(String name) {
-        String locatorValue="//strong[text()='"+name+" Originated From']";
-        WebElement nameXpath=driver.findElement(By.xpath(locatorValue));
+        String locatorValue = "//strong[text()='" + name + " Originated From']";
+        WebElement nameXpath = driver.findElement(By.xpath(locatorValue));
         SeleniumWait.waitUntilVisibilityOfElement(driver, nameXpath, 20);
         Assertions.softAssertTrue(REGION_LBL.isDisplayed(),
                 "Actual Value: '" + REGION_LBL.getText() + "' is appearing blank while looking for real data");
@@ -693,13 +693,13 @@ public class ICPPage {
 
 
     public void validateAppliedFilter(String gender, String emirates, String nationality) {
-        String locatorGender="//strong[text()='Applied Filters']//following::strong[text()='"+gender+"']";
-        WebElement genderXpath=driver.findElement(By.xpath(locatorGender));
+        String locatorGender = "//strong[text()='Applied Filters']//following::strong[text()='" + gender + "']";
+        WebElement genderXpath = driver.findElement(By.xpath(locatorGender));
         SeleniumWait.waitUntilVisibilityOfElement(driver, genderXpath, 20);
-        String locatorEmirates="//strong[text()='Applied Filters']//following::strong[text()='"+emirates+"']";
-        WebElement emiratesXpath=driver.findElement(By.xpath(locatorGender));
-        String locatorNationality="//strong[text()='Applied Filters']//following::strong[text()='"+nationality+"']";
-        WebElement nationalityXpath=driver.findElement(By.xpath(locatorGender));
+        String locatorEmirates = "//strong[text()='Applied Filters']//following::strong[text()='" + emirates + "']";
+        WebElement emiratesXpath = driver.findElement(By.xpath(locatorGender));
+        String locatorNationality = "//strong[text()='Applied Filters']//following::strong[text()='" + nationality + "']";
+        WebElement nationalityXpath = driver.findElement(By.xpath(locatorGender));
         Assertions.softAssertTrue(genderXpath.isDisplayed(),
                 "Actual Value: '" + genderXpath.getText() + "' is not appearing");
         Assertions.softAssertTrue(emiratesXpath.isDisplayed(),
@@ -710,7 +710,7 @@ public class ICPPage {
     }
 
     public void validateContinent() {
-        SeleniumWait.waitForElementToBeClickable(driver, ALL_NATIONALITY_LBL,30);
+        SeleniumWait.waitForElementToBeClickable(driver, ALL_NATIONALITY_LBL, 30);
         Assertions.softAssertTrue(ALL_NATIONALITY_LBL.isDisplayed(),
                 "Actual Value: '" + ALL_NATIONALITY_LBL.getText() + "' ALL_NATIONALITY_LBL is not appearing");
         Assertions.softAssertTrue(EUROPE_LBL.isDisplayed(),
@@ -733,8 +733,8 @@ public class ICPPage {
     }
 
     public void validateCountryNameInCountryList(String nationality) {
-        String locatorNationality="//th[text()='Nationality']//following::span[text()='"+nationality+"']";
-        WebElement nationalityXpath=driver.findElement(By.xpath(locatorNationality));
+        String locatorNationality = "//th[text()='Nationality']//following::span[text()='" + nationality + "']";
+        WebElement nationalityXpath = driver.findElement(By.xpath(locatorNationality));
         SeleniumWait.waitUntilVisibilityOfElement(driver, nationalityXpath, 20);
         Assertions.softAssertTrue(nationalityXpath.isDisplayed(),
                 "Actual Value: '" + nationalityXpath.getText() + "' is not appearing");
@@ -760,8 +760,8 @@ public class ICPPage {
     }
 
     public void validateTotalExpatResidentsByEmirates(String emirates) {
-        String locatorEmirates="//strong[text()='Applied Filters']//following::strong[text()='"+emirates+"']";
-        WebElement xpathEmirates=driver.findElement(By.xpath(locatorEmirates));
+        String locatorEmirates = "//strong[text()='Applied Filters']//following::strong[text()='" + emirates + "']";
+        WebElement xpathEmirates = driver.findElement(By.xpath(locatorEmirates));
         SeleniumWait.waitUntilVisibilityOfElement(driver, xpathEmirates, 20);
         Assertions.softAssertTrue(TOTAL_EXPAT_RESIDENTS_CHART_DIV.isDisplayed(),
                 "Actual Value: '" + TOTAL_EXPAT_RESIDENTS_CHART_DIV.getText() + "' is not appearing or not rendered correctly.");
@@ -803,7 +803,7 @@ public class ICPPage {
     }
 
     public void validateContinentDashboard2() {
-        SeleniumWait.waitForElementToBeClickable(driver, DB2_ALL_NATIONALITY_LBL,30);
+        SeleniumWait.waitForElementToBeClickable(driver, DB2_ALL_NATIONALITY_LBL, 30);
         Assertions.softAssertTrue(DB2_ALL_NATIONALITY_LBL.isDisplayed(),
                 "Actual Value: '" + DB2_ALL_NATIONALITY_LBL.getText() + "' ALL_NATIONALITY_LBL is not appearing");
         Assertions.softAssertTrue(DB2_EUROPE_LBL.isDisplayed(),
@@ -856,11 +856,13 @@ public class ICPPage {
                 "Actual Value: '" + DB2_RESIDENTS_BY_EMIRATES_CHART.getText() + "' is not appearing");
         Assertions.softAssertAll();
     }
+
     public void validateDB2ResidentsByProfession() {
         Assertions.softAssertTrue(DB2_RESIDENTS_BY_PROFESSION_TABLE.isDisplayed(),
                 "Actual Value: '" + DB2_RESIDENTS_BY_PROFESSION_TABLE.getText() + "' is not appearing");
         Assertions.softAssertAll();
     }
+
     public void validateDB2ResidentsBySponsor() {
         Assertions.softAssertTrue(DB2_RESIDENTS_BY_SPONSOR_TABLE.isDisplayed(),
                 "Actual Value: '" + DB2_RESIDENTS_BY_SPONSOR_TABLE.getText() + "' is not appearing");
