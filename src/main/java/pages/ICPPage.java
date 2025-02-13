@@ -133,6 +133,23 @@ public class ICPPage {
     WebElement NATIONALITY_DB1_DD;
     @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Expats Residency')]")
     WebElement EXPATS_RESIDENCY_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Expatriate By Region')]//following::span[text()='All Nationalities']")
+    WebElement ALL_NATIONALITY_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Expatriate By Region')]//following::span[text()='Europe']")
+    WebElement EUROPE_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Expatriate By Region')]//following::span[text()='Africa']")
+    WebElement AFRICA_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Expatriate By Region')]//following::span[text()='Asia']")
+    WebElement ASIA_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Expatriate By Region')]//following::span[text()='North America']")
+    WebElement NORTH_AMERICA_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Expatriate By Region')]//following::span[text()='South America']")
+    WebElement SOUTH_AMERICA_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Expatriate By Region')]//following::span[text()='Oceania']")
+    WebElement OCEANIA_LBL;
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Expatriate By Region')]//following::span[text()='Seven seas']")
+    WebElement SEVEN_SEAS_LBL;
+
 
     // Locators for Use Dashboard 2 (Active Residency Page)
     @FindBy(how = How.XPATH, using = "//span[text()='Active Residency']")
@@ -611,4 +628,44 @@ public class ICPPage {
                 "Actual Value: '" + OTHER_TOP_REGION_OF_ORIGIN_LBL.getText() + "' is appearing blank while looking for real data");
         Assertions.softAssertAll();
     }
+
+
+    public void validateAppliedFilter(String gender, String emirates, String nationality) {
+        String locatorGender="//strong[text()='Applied Filters']//following::strong[text()='"+gender+"']";
+        WebElement genderXpath=driver.findElement(By.xpath(locatorGender));
+        SeleniumWait.waitUntilVisibilityOfElement(driver, genderXpath, 20);
+        String locatorEmirates="//strong[text()='Applied Filters']//following::strong[text()='"+emirates+"']";
+        WebElement emiratesXpath=driver.findElement(By.xpath(locatorGender));
+        String locatorNationality="//strong[text()='Applied Filters']//following::strong[text()='"+nationality+"']";
+        WebElement nationalityXpath=driver.findElement(By.xpath(locatorGender));
+        Assertions.softAssertTrue(genderXpath.isDisplayed(),
+                "Actual Value: '" + genderXpath.getText() + "' is not appearing");
+        Assertions.softAssertTrue(emiratesXpath.isDisplayed(),
+                "Actual Value: '" + emiratesXpath.getText() + "' is not appearing");
+        Assertions.softAssertTrue(nationalityXpath.isDisplayed(),
+                "Actual Value: '" + nationalityXpath.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
+
+    public void validateContinent() {
+        Assertions.softAssertTrue(ALL_NATIONALITY_LBL.isDisplayed(),
+                "Actual Value: '" + ALL_NATIONALITY_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(EUROPE_LBL.isDisplayed(),
+                "Actual Value: '" + EUROPE_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(AFRICA_LBL.isDisplayed(),
+                "Actual Value: '" + AFRICA_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(ASIA_LBL.isDisplayed(),
+                "Actual Value: '" + ASIA_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(NORTH_AMERICA_LBL.isDisplayed(),
+                "Actual Value: '" + NORTH_AMERICA_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(SOUTH_AMERICA_LBL.isDisplayed(),
+                "Actual Value: '" + SOUTH_AMERICA_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(OCEANIA_LBL.isDisplayed(),
+                "Actual Value: '" + OCEANIA_LBL.getText() + "' is not appearing");
+        Assertions.softAssertTrue(SEVEN_SEAS_LBL.isDisplayed(),
+                "Actual Value: '" + SEVEN_SEAS_LBL.getText() + "' is not appearing");
+        Assertions.softAssertAll();
+    }
+
+
 }

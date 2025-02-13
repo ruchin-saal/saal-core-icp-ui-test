@@ -1,2 +1,2 @@
-07:02:2025 17:05:28.029 INFO  testSuite.ICPTest [main] - initializeDriver Initializing the web-driver instance based on the things from the config file
-07:02:2025 17:05:44.377 INFO  testSuite.ICPTest [main] - validateNameOriginAfterEnteringName Visit UC2(Name Origin Explorer) Page and apply filters
+12:02:2025 15:27:23.220 INFO  testSuite.ICPTest [main] - initializeDriver Initializing the web-driver instance based on the things from the config file
+12:02:2025 15:27:38.847 INFO  testSuite.ICPTest [main] - validateExpatsResidencyPageWithFilter Visit Dashboard1(Expats Residency) Page and apply filters

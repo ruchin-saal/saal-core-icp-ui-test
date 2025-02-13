@@ -32,7 +32,7 @@ public class ICPTest extends BaseClass {
     public void tearDown() {
         SeleniumUtils.terminateWindow(WebDriverSessionManager.getDriver(), Options.QUIT);
     }
-
+//    DONE
     @Description("Visit UC1(Passenger Forecasting) Page and validate page is up and running")
     @Story("Visit UC1(Passenger Forecasting) Page")
     @Severity(SeverityLevel.CRITICAL)
@@ -44,7 +44,7 @@ public class ICPTest extends BaseClass {
         icpPage.selectPassengerForecastingPage();
         icpPage.validatePassengerForecastingHeading(getValueFromProperties("passengerForecastingHeading"));
     }
-
+    //    DONE
     @Test(description = "Visit UC1(Passenger Forecasting) Page and apply filters", groups = {"regression", "smoke", "sanity"})
     @Description("Visit UC1(Passenger Forecasting) Page and apply filters")
     @Story("Visit UC1(Passenger Forecasting) Page")
@@ -60,7 +60,7 @@ public class ICPTest extends BaseClass {
         icpPage.validatePassengersForecastAnalysis();
         icpPage.validateStaffedGatePassengersCount();
     }
-
+    //    DONE
     @Test(description = "Visit UC2(Name Origin Explorer) page is up and running", groups = {"regression", "smoke", "sanity"})
     @Description("Visit UC2(Name Origin Explorer) Page")
     @Story("Visit UC2(Name Origin Explorer) Page")
@@ -71,7 +71,7 @@ public class ICPTest extends BaseClass {
         icpPage.selectNameOriginExplorerPage();
         icpPage.validateNameOriginHeading(getValueFromProperties("nameOriginHeading"));
     }
-
+    //    DONE
     @Test(description = "Visit UC2(Name Origin Explorer) Page and apply filters", groups = {"regression", "smoke", "sanity"})
     @Description("Visit UC2(Name Origin Explorer) Page and apply filters")
     @Story("Visit UC2(Name Origin Explorer) Page and apply filters")
@@ -100,11 +100,17 @@ public class ICPTest extends BaseClass {
     @Description("Visit Dashboard1(Expats Residency) Page and apply filters")
     @Story("Visit Dashboard1(Expats Residency) Page and apply filters")
     @Severity(SeverityLevel.CRITICAL)
-    public void test_case_6() {
+    public void validateExpatsResidencyPageWithFilter() {
         logger.info("Visit Dashboard1(Expats Residency) Page and apply filters");
         icpPage.performLoginIntoICPApplication(getValueFromProperties("adminUserName"), getValueFromProperties("adminPassword"));
         icpPage.selectExpatsResidencyPage();
-        icpPage.selectFiltersForDashboard1("Male", "Abu Dhabi", "India");
+        icpPage.selectFiltersForDashboard1(getValueFromProperties("dashboard1Gender"),
+                getValueFromProperties("dashboard1Emirates"),
+                getValueFromProperties("dashboard1Country"));
+        icpPage.validateAppliedFilter(getValueFromProperties("dashboard1Gender"),
+                getValueFromProperties("dashboard1Emirates"),
+                getValueFromProperties("dashboard1Country"));
+        icpPage.validateContinent();
     }
 
     @Test(description = "Visit Dashboard2(Active Residency) page is up and running", groups = {"regression", "smoke", "sanity"})
