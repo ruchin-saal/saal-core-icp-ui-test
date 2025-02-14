@@ -1,2 +1,0 @@
-12:02:2025 15:27:23.220 INFO  testSuite.ICPTest [main] - initializeDriver Initializing the web-driver instance based on the things from the config file
-12:02:2025 15:27:38.847 INFO  testSuite.ICPTest [main] - validateExpatsResidencyPageWithFilter Visit Dashboard1(Expats Residency) Page and apply filters
