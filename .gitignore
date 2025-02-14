@@ -1,11 +1,15 @@
 # Java
 *.class
+**/*.class
+
+# Compiled files
+target/
 *.jar
 *.war
 *.ear
 
 # Logs
-logs
+logs/
 *.log
 Logs/
 
@@ -17,7 +21,8 @@ Logs/
 
 # Maven
 target/
-*.mvn
+.mvn/
+!/.mvn/wrapper
 
 # Selenium test artifacts
 videos/
