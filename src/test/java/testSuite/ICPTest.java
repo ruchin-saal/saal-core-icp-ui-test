@@ -174,11 +174,25 @@ public class ICPTest extends BaseClass {
     @Description("Visit Dashboard3(Active General) Page and apply filters")
     @Story("Visit Dashboard3(Active General) Page and apply filters")
     @Severity(SeverityLevel.CRITICAL)
-    public void test_case_10() {
+    public void validateActiveGeneralHeadingWithFilter() {
         logger.info("Visit Dashboard3(Active General) Page and apply filters");
         icpPage.performLoginIntoICPApplication(getValueFromProperties("adminUserName"), getValueFromProperties("adminPassword"));
         icpPage.selectActiveGeneralPage();
-        icpPage.selectFiltersForDashboard3("India", "Abu Dhabi", "0", "40", "Male");
+        icpPage.selectFiltersForDashboard3(getValueFromProperties("dashboard3Country"),
+                getValueFromProperties("dashboard3Emirates"),
+                getValueFromProperties("dashboard3StartingAge"),
+                getValueFromProperties("dashboard3EndAge"),
+                getValueFromProperties("dashboard3Gender"));
+        String ageRange = getValueFromProperties("dashboard3StartingAge") + "-" + getValueFromProperties("dashboard3EndAge");
+        icpPage.validateAppliedFilterForDashboard3(getValueFromProperties("dashboard3Country"),
+                getValueFromProperties("dashboard3Emirates"),
+                ageRange,
+                getValueFromProperties("dashboard3Gender"));
+        icpPage.validateGeneralPopulationDashboard3();
+        icpPage.validatePopulationByEmiratesDashboard3();
+        icpPage.validateContinentDashboard3();
+        icpPage.validateCountryNameInCountryList(getValueFromProperties("dashboard3Country"));
+        icpPage.validatePopulationByGenderDashboard3();
+        icpPage.validatePopulationByAgeRangeDashboard3();
     }
 }
-
